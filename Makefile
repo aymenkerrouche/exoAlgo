@@ -1,13 +1,15 @@
-demo.exe: main.o liste.o
-	$(CC) -Wall -Wextra -std=c11 -g -o demo.exe main.o liste.o
+CC     = gcc
+CFLAGS = -Wall -Wextra -std=c11 -g
+OBJ    = main.o liste.o
+TARGET = demo.exe
 
-main.o: main.c liste.h
-	$(CC) -Wall -Wextra -std=c11 -g -c main.c
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
 
-liste.o: liste.c liste.h
-	$(CC) -Wall -Wextra -std=c11 -g -c liste.c
+%.o: %.c liste.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f main.o liste.o demo.exe
+	rm -f $(OBJ) $(TARGET)
 
 .PHONY: clean
