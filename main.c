@@ -11,8 +11,10 @@ int main(void)
     liste_afficher(liste);
     printf("longueur    : %d\n", liste_longueur(liste));
     printf("contient 30 : %s\n", liste_contient(liste, 30) ? "oui" : "non");
+    printf("blocs apres construction : %d\n", liste_blocs_en_circulation());
 
     liste_liberer(liste);
     printf("liberee\n");
+    printf("blocs apres liberation   : %d\n", liste_blocs_en_circulation());
     return 0;
 }
